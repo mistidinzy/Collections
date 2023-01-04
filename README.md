@@ -12,6 +12,7 @@
 2. Copy this interface into your project, then create a `Library` class that implements it:
     ![Interface One](./img/lending-library-interface1.png)
     - Since books need to be borrowed by Title, use a private `Dictionary<string, Book>` for storage.
+    - See: [C# Dictionary - Microsoft Docs](https://bit.ly/3X2vFBO)
 3. Copy this interface into your project, then create a generic `Backpack<T>` class that implements it to hold anything (like borrowed Books!):
     ![Interface Two](./img/lending-library-interface2.png)
     - Since items need to be unpacked by index, use a `private List<T>` for storage.
