@@ -12,7 +12,7 @@ namespace LendingLibrary
     }
 
     //Since books need to be borrowed by Title, use a private Dictionary<string, Book> for storage.
-    private Dictionary<int, Book> catalog = new Dictionary<int, Book>();
+    private static Dictionary<int, Book> catalog = new Dictionary<int, Book>();
 
     public int Count => throw new NotImplementedException();
 
@@ -64,6 +64,20 @@ namespace LendingLibrary
     IEnumerator IEnumerable.GetEnumerator()
     {
       throw new NotImplementedException();
+    }
+
+    public static int generateIDNumber()
+    {
+      Random rnd = new Random();
+
+      int num = rnd.Next(100, 1000);
+
+      if(catalog.ContainsKey(num))
+      {
+        int newNum = rnd.Next(100, 1000);
+        num = newNum;
+      }
+      return num;
     }
   }
 }

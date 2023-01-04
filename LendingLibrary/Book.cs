@@ -3,14 +3,16 @@ namespace LendingLibrary
 {
   public class Book
   {
-    public Book(string title, string firstName, string lastName, int pages)
+    public Book(int bookID, string title, string firstName, string lastName, int pages)
     {
+      ID = bookID;
       Title = title;
       FirstName = firstName;
       LastName = lastName;
       Pages = pages;
     }
 
+    int ID { get; set; }
     string Title { get; set; }
     string FirstName { get; set; }
     string LastName { get; set; }
