@@ -31,14 +31,11 @@ namespace LendingLibrary
         Console.WriteLine("How many pages does it have?");
         string? pInput = Console.ReadLine();
         int pageInt = Int32.Parse(pInput);
+        int bookID = generateIDNumber();
 
-        Book newBook = new Book(tInput, fNInput, lNInput, pageInt);
+        Book newBook = new Book(bookID, tInput, fNInput, lNInput, pageInt);
 
-        Console.WriteLine("What is the Book ID?");
-        string? idInput = Console.ReadLine();
-        int idInt = Int32.Parse(idInput);
-
-        catalog.Add(idInt, newBook);
+        catalog.Add(bookID, newBook);
       }
       catch
       {
