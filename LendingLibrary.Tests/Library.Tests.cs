@@ -11,6 +11,7 @@ public class LibraryTests
 
       int bookID = Library.generateIDNumber();
       Book testBook = new Book(bookID, "BookName", "Author", "Authorington", 50);
+
       catalog.Add(bookID, testBook);
 
       Assert.Empty(catalog);
