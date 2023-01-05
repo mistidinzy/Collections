@@ -6,6 +6,8 @@ namespace LendingLibrary
 {
   public class Library : ILibrary
   {
+    int count = 0;
+
     public Library()
     {
       
@@ -14,28 +16,24 @@ namespace LendingLibrary
     //Since books need to be borrowed by Title, use a private Dictionary<string, Book> for storage.
     private static Dictionary<int, Book> catalog = new Dictionary<int, Book>();
 
-    public int Count => throw new NotImplementedException();
+    public int Count => count;
 
     public void AddBook(string title, string firstName, string lastName, int numberOfPages)
     {
       try
       {
-        Console.WriteLine("Add a Book");
-        Console.WriteLine("");
-        Console.WriteLine("What is the title?");
-        string? tInput = Console.ReadLine();
-        Console.WriteLine("What is the author's first name?");
-        string? fNInput = Console.ReadLine();
-        Console.WriteLine("What is the author's last name?");
-        string? lNInput = Console.ReadLine();
-        Console.WriteLine("How many pages does it have?");
-        string? pInput = Console.ReadLine();
-        int pageInt = Int32.Parse(pInput);
+        string? tInput = title;
+        string? fNInput = firstName;
+        string? lNInput = lastName;
+        int pInput = numberOfPages;
         int bookID = generateIDNumber();
 
-        Book newBook = new Book(bookID, tInput, fNInput, lNInput, pageInt);
-
+        Book newBook = new Book(bookID, tInput, fNInput, lNInput, pInput);
         catalog.Add(bookID, newBook);
+        Console.WriteLine($"New book has been added: {newBook.Title}, by {newBook.FirstName} {newBook.LastName}");
+        count = count + 1;
+
+        Console.WriteLine($"Number of Books in Library: {count}.");
       }
       catch
       {
