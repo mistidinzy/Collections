@@ -42,4 +42,19 @@ public class LibraryTests
     Assert.Equal("Fitzgerald", book.LastName);
     Assert.Equal(180, book.Pages);
   }
+
+  [Fact]
+  public void Borrow_InvalidTitle_ReturnsNull()
+  {
+    // Arrange
+    var library = new Library();
+    library.AddBook("The Great Gatsby", "F. Scott", "Fitzgerald", 180);
+    library.AddBook("To Kill a Mockingbird", "Harper", "Lee", 210);
+
+    // Act
+    var book = library.Borrow("Pride and Prejudice");
+
+    // Assert
+    Assert.Null(book);
+  }
 }

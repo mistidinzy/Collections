@@ -48,12 +48,13 @@ namespace LendingLibrary
     public Book Borrow(string title)
     {
       Book book;
+
       if (catalog.TryGetValue(title, out book))
       {
         catalog.Remove(title);
         return book;
       }
-      return null;
+      else return null;
     }
 
     public void Return(Book book)
