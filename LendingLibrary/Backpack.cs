@@ -6,14 +6,9 @@ namespace LendingLibrary
   public class Backpack<T> : IBag<T>
   {
     public Backpack()
-    {   }
+    { }
 
     List<T> bag = new List<T>();
-
-    public IEnumerator<T> GetEnumerator()
-    {
-      throw new NotImplementedException();
-    }
 
     public void Pack(T item)
     {
@@ -29,7 +24,15 @@ namespace LendingLibrary
 
     IEnumerator IEnumerable.GetEnumerator()
     {
-      throw new NotImplementedException();
+      for (int i = 0; i < bag.Count; i++)
+      {
+        yield return bag[i];
+      }
+    }
+
+    public IEnumerator<T> GetEnumerator()
+    {
+      return GetEnumerator();
     }
   }
 }
