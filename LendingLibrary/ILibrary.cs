@@ -6,7 +6,7 @@ namespace LendingLibrary
     /// <summary>
     /// Add a Book to the library.
     /// </summary>
-    void Add(string title, string firstName, string lastName, int numberOfPages);
+    void AddBook(string title, string firstName, string lastName, int numberOfPages);
 
     /// <summary>
     /// Remove a Book from the library with the given title.

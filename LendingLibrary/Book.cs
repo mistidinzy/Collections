@@ -3,6 +3,11 @@ namespace LendingLibrary
 {
   public class Book
   {
+    public string Title { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public int Pages { get; set; }
+
     public Book(string title, string firstName, string lastName, int pages)
     {
       Title = title;
@@ -10,11 +15,6 @@ namespace LendingLibrary
       LastName = lastName;
       Pages = pages;
     }
-
-    string Title { get; set; }
-    string FirstName { get; set; }
-    string LastName { get; set; }
-    int Pages { get; set; }
   }
 }
 
