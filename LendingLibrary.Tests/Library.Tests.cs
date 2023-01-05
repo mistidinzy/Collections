@@ -14,6 +14,6 @@ public class LibraryTests
 
       catalog.Add(bookID, testBook);
 
-      Assert.Empty(catalog);
+      Assert.NotEmpty(catalog);
     }
 }
