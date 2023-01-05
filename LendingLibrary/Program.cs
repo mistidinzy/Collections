@@ -9,6 +9,7 @@ namespace LendingLibrary
       Console.WriteLine("Hello, Welcome to the Library!");
 
       userMenu();
+      //LoadSeedBooks();
     }
 
     static void userMenu()
