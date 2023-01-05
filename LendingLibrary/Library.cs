@@ -92,6 +92,24 @@ namespace LendingLibrary
       AddBook("Wuthering Heights", "Emily", "Brontë", 342);
       AddBook("Dracula", "Bram", "Stoker", 447);
     }
+
+    public void UserAddedBook()
+    {
+      Console.WriteLine("Add a Book");
+      Console.WriteLine("");
+      Console.WriteLine("What is the title?");
+      string? titleInput = Console.ReadLine();
+      Console.WriteLine("What is the author's first name?");
+      string? firstNameInput = Console.ReadLine();
+      Console.WriteLine("What is the author's last name?");
+      string? lastNameInput = Console.ReadLine();
+      Console.WriteLine("How many pages does it have?");
+      string? pagesInput = Console.ReadLine();
+      int pageInt = Int32.Parse(pagesInput);
+      Book newBook = new Book(titleInput, firstNameInput, lastNameInput, pageInt);
+      catalog.Add(titleInput, newBook);
+      Console.WriteLine($"New book, \"{titleInput}\" has been added!");
+    }
   }
 }
 
