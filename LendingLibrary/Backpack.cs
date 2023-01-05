@@ -22,7 +22,9 @@ namespace LendingLibrary
 
     public T Unpack(int index)
     {
-      throw new NotImplementedException();
+      T book = bag.ElementAt<T>(index);
+      bag.RemoveAt(index);
+      return book;
     }
 
     IEnumerator IEnumerable.GetEnumerator()
