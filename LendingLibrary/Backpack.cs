@@ -8,6 +8,8 @@ namespace LendingLibrary
     public Backpack()
     {   }
 
+    List<T> bag = new List<T>();
+
     public IEnumerator<T> GetEnumerator()
     {
       throw new NotImplementedException();
@@ -15,7 +17,7 @@ namespace LendingLibrary
 
     public void Pack(T item)
     {
-      throw new NotImplementedException();
+      bag.Add(item);
     }
 
     public T Unpack(int index)
