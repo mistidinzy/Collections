@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace LendingLibrary.Tests;
 
@@ -16,12 +17,16 @@ public class LibraryTests
   {
     Dictionary<int, Book> catalog = new Dictionary<int, Book>();
 
-    int bookID = Library.generateIDNumber();
+    int bookID = 42;
 
     Book testBook = new Book(bookID, "BookName", "Author", "Authorington", 50);
 
     catalog.Add(bookID, testBook);
 
     Assert.NotEmpty(catalog);
+
+    int testBookID = testBook.ID;
+
+    Assert.Equal(43, testBookID);
   }
 }

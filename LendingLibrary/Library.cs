@@ -16,7 +16,7 @@ namespace LendingLibrary
 
     public int Count => throw new NotImplementedException();
 
-    public static void AddBook(string title, string firstName, string lastName, int numberOfPages)
+    public void AddBook(string title, string firstName, string lastName, int numberOfPages)
     {
       try
       {
