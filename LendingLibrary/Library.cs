@@ -10,7 +10,7 @@ namespace LendingLibrary
     int bookCount = 0;
     T[] books = new T[2];
 
-    public Library(int bookCount)
+    public Library()
     { }
 
     private static Dictionary<string, Book> catalog = new Dictionary<string, Book>();
@@ -28,7 +28,7 @@ namespace LendingLibrary
       Book newBook = new Book(tInput, fNInput, lNInput, pInput);
       catalog.Add(tInput, newBook);
       Console.WriteLine($"New book has been added: {newBook.Title}, by {newBook.FirstName} {newBook.LastName}");
-      bookCount = bookCount + 1;
+      bookCount++;
       Console.WriteLine($"Number of Books in Library: {bookCount}.");
     }
 
@@ -40,6 +40,7 @@ namespace LendingLibrary
       {
         catalog.Remove(title);
         checkedOut.Add(title, book);
+        bookCount--;
         return book;
       }
       else return null;
@@ -51,10 +52,7 @@ namespace LendingLibrary
       {
         checkedOut.Remove(book.Title);
         catalog.Add(book.Title, book);
-      }
-      else
-      {
-        throw new NotImplementedException();
+        bookCount++;
       }
     }
 
@@ -82,6 +80,17 @@ namespace LendingLibrary
     IEnumerator IEnumerable.GetEnumerator()
     {
       throw new NotImplementedException();
+    }
+
+    public void LoadSeedBooks()
+    {
+      AddBook("The Great Gatsby", "F. Scott", "Fitzgerald", 180);
+      AddBook("To Kill a Mockingbird", "Harper", "Lee", 210);
+      AddBook("Moby-Dick", "Herman", "Melville", 635);
+      AddBook("Pride and Prejudice", "Jane", "Austen", 279);
+      AddBook("The Catcher in the Rye", "J.D.", "Salinger", 277);
+      AddBook("Wuthering Heights", "Emily", "Brontë", 342);
+      AddBook("Dracula", "Bram", "Stoker", 447);
     }
   }
 }

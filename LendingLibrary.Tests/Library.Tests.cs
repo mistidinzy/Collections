@@ -28,7 +28,7 @@ public class LibraryTests
   public void CanBorrowBook()
   {
     // Arrange
-    var library = new Library<Book>(5);
+    var library = new Library<Book>();
     library.AddBook("The Great Gatsby", "F. Scott", "Fitzgerald", 180);
     library.AddBook("To Kill a Mockingbird", "Harper", "Lee", 210);
 
@@ -47,7 +47,7 @@ public class LibraryTests
   public void Borrow_InvalidTitle_Throws()
   {
     // Arrange
-    var library = new Library<Book>(5);
+    var library = new Library<Book>();
     library.AddBook("The Great Gatsby", "F. Scott", "Fitzgerald", 180);
 
     // Act
