@@ -1,22 +1,24 @@
 ﻿#pragma warning disable CS8604 // Possible null reference argument.
 using System;
 using System.Collections;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace LendingLibrary
 {
   public class Library : ILibrary
   {
-    int count = 0;
+    int bookCount = 0;
 
     public Library()
     {
-      
+
     }
 
     //Since books need to be borrowed by Title, use a private Dictionary<string, Book> for storage.
-    private static Dictionary<int, Book> catalog = new Dictionary<int, Book>();
+    private static Dictionary<string, Book> catalog = new Dictionary<string, Book>();
+    private static Dictionary<string, Book> checkedOut = new Dictionary<string, Book>();
 
-    public int Count => count;
+    public int Count => bookCount;
 
     public void AddBook(string title, string firstName, string lastName, int numberOfPages)
     {
@@ -26,14 +28,16 @@ namespace LendingLibrary
         string? fNInput = firstName;
         string? lNInput = lastName;
         int pInput = numberOfPages;
-        int bookID = generateIDNumber();
 
-        Book newBook = new Book(bookID, tInput, fNInput, lNInput, pInput);
-        catalog.Add(bookID, newBook);
+        Book newBook = new Book(tInput, fNInput, lNInput, pInput);
+
+        catalog.Add(tInput, newBook);
+
         Console.WriteLine($"New book has been added: {newBook.Title}, by {newBook.FirstName} {newBook.LastName}");
-        count = count + 1;
 
-        Console.WriteLine($"Number of Books in Library: {count}.");
+        bookCount = bookCount + 1;
+
+        Console.WriteLine($"Number of Books in Library: {bookCount}.");
       }
       catch
       {
@@ -43,7 +47,13 @@ namespace LendingLibrary
 
     public Book Borrow(string title)
     {
-      throw new NotImplementedException();
+      Book book;
+      if (catalog.TryGetValue(title, out book))
+      {
+        catalog.Remove(title);
+        return book;
+      }
+      return null;
     }
 
     public void Return(Book book)
@@ -59,20 +69,6 @@ namespace LendingLibrary
     IEnumerator IEnumerable.GetEnumerator()
     {
       throw new NotImplementedException();
-    }
-
-    public static int generateIDNumber()
-    {
-      Random rnd = new Random();
-
-      int num = rnd.Next(100, 1000);
-
-      if(catalog.ContainsKey(num))
-      {
-        int newNum = rnd.Next(100, 1000);
-        num = newNum;
-      }
-      return num;
     }
   }
 }

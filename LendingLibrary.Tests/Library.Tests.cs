@@ -5,28 +5,41 @@ namespace LendingLibrary.Tests;
 
 public class LibraryTests
 {
-    [Fact]
-    public void DictionaryWorks()
-    {
-      Dictionary<int, Book> catalog = new Dictionary<int, Book>();
-      Assert.Empty(catalog);
-    }
+  [Fact]
+  public void NewDictionaryWorks()
+  {
+    Dictionary<string, Book> catalog = new Dictionary<string, Book>();
+    Assert.Empty(catalog);
+  }
 
   [Fact]
   public void CanAddBookToCatalog()
   {
-    Dictionary<int, Book> catalog = new Dictionary<int, Book>();
-
-    int bookID = 42;
-
-    Book testBook = new Book(bookID, "BookName", "Author", "Authorington", 50);
-
+    Dictionary<string, Book> catalog = new Dictionary<string, Book>();
+    string bookID = "BookName";
+    Book testBook = new Book("BookName", "Author", "Authorington", 50);
     catalog.Add(bookID, testBook);
-
     Assert.NotEmpty(catalog);
+    string testBookID = testBook.Title;
+    Assert.Equal("BookName", testBookID);
+  }
 
-    int testBookID = testBook.ID;
-    
-    Assert.Equal(42, testBookID);
+  [Fact]
+  public void CanBorrowBook()
+  {
+    // Arrange
+    var library = new Library();
+    library.AddBook("The Great Gatsby", "F. Scott", "Fitzgerald", 180);
+    library.AddBook("To Kill a Mockingbird", "Harper", "Lee", 210);
+
+    // Act
+    var book = library.Borrow("The Great Gatsby");
+
+    // Assert
+    Assert.NotNull(book);
+    Assert.Equal("The Great Gatsby", book.Title);
+    Assert.Equal("F. Scott", book.FirstName);
+    Assert.Equal("Fitzgerald", book.LastName);
+    Assert.Equal(180, book.Pages);
   }
 }
