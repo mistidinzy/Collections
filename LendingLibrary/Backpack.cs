@@ -6,8 +6,7 @@ namespace LendingLibrary
   public class Backpack<T> : IBag<T>
   {
     public Backpack()
-    {
-    }
+    {   }
 
     public IEnumerator<T> GetEnumerator()
     {

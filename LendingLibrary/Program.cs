@@ -28,6 +28,7 @@ namespace LendingLibrary
           break;
         case "2":
           Console.WriteLine("You chose option 2. Add a Book");
+          //Library.catalog.PrintDictionary();
           break;
         case "3":
           Console.WriteLine("You chose option 3. Borrow a Book");
