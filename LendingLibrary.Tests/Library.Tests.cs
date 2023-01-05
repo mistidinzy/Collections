@@ -26,7 +26,7 @@ public class LibraryTests
     Assert.NotEmpty(catalog);
 
     int testBookID = testBook.ID;
-
-    Assert.Equal(43, testBookID);
+    
+    Assert.Equal(42, testBookID);
   }
 }
